@@ -23,6 +23,9 @@ public class MyApplication extends Application {
         //如果您已经在AndroidManifest.xml中配置过appkey和channel值，可以调用此版本初始化函数
         UMConfigure.init(this, appKey, "baiBaiTestChannel", UMConfigure.DEVICE_TYPE_PHONE, null);
 
+//        //事件统计
+//        UMConfigure.setProcessEvent(true);
+
         //选用AUTO页面采集模式（4.0及以上），除此之外还有
         //MANUAL模式（4.0以下）：手动模式，需要手动在各个Activity的onResume和onPause方法调用MobclickAgent.onResume/MobclickAgent.onPause
         // -在AUTO或MANUAL模式下，如果需要对非Activity页面，如Fragment、自定义View等非标准页面进行统计。需要通过MobclickAgent.onPageStart/MobclickAgent.onPageEnd接口在合适的时机进行页面统计。
