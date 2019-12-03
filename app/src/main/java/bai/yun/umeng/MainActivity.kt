@@ -4,6 +4,7 @@ import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import bai.yun.umeng.excaption.CustomException
 import bai.yun.umeng.util.DateUtil
 import com.umeng.analytics.MobclickAgent
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,6 +44,13 @@ class MainActivity : AppCompatActivity() {
             personInfoMap["sn"] = Build.SERIAL
             personInfoMap["time"] = DateUtil.getCurDateStr("yyyy-MM-dd HH:mm:ss")
             MobclickAgent.onEvent(this, "personInfo", personInfoMap)
+        }
+
+        btn_custom_exception.setOnClickListener {
+            Log.d(TAG, "点击了自定义异常")
+            //适用于自己捕捉了异常，需要上送到友盟
+            val customException = CustomException("001", "我是自定义错误")
+            MobclickAgent.reportError(this, customException)
         }
 
     }

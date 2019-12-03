@@ -31,4 +31,10 @@
         android:layout_height="wrap_content"
         android:text="自定义事件map形式（如：个人信息）" />
 
+    <Button
+        android:id="@+id/btn_custom_exception"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义异常" />
+
 </LinearLayout>
