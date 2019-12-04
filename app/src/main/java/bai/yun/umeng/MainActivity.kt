@@ -1,5 +1,6 @@
 package bai.yun.umeng
 
+import android.content.Intent
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -53,6 +54,26 @@ class MainActivity : AppCompatActivity() {
             MobclickAgent.reportError(this, customException)
         }
 
+        btn_second.setOnClickListener {
+            startActivity(Intent(this, SecondActivity::class.java))
+        }
+
+        btn_fragment.setOnClickListener {
+            Log.d(TAG, "点击了跳转到fragment")
+            startActivity(Intent(this, IncludeFragmentActivity::class.java))
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MobclickAgent.onPageStart("主界面 Main")//统计页面
+//        MobclickAgent.onResume(this)//统计时长，初始化时集成模式设置为AUTH可自定统计时长，不需要手动写这行代码
+    }
+
+    override fun onPause() {
+        super.onPause()
+        MobclickAgent.onPageEnd("主界面 Main")//统计页面,与MobclickAgent.onPageStart()成对出现
     }
 
 }
